@@ -228,6 +228,3 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
-
-# Texas Hold em Game Engine
-TexasHoldemGameEngine/
