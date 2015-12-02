@@ -12,6 +12,7 @@
             //SimulateGames(new SmartVsDummyPlayerSimulator());
             //SimulateGames(new SmartVsSmartPlayerSimulator());
             //SimulateGames(new AlwaysCallPlayersGameSimulator());
+            SimulateGames(new SharkVsAllInPlayerSimulator());
             SimulateGames(new SharkVsSmartPlayerSimulator());
             SimulateGames(new SharkVsDummyPlayerSimulator());
         }

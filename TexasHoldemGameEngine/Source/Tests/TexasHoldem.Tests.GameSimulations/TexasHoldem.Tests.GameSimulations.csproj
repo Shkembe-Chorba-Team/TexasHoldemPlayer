@@ -65,6 +65,7 @@
     <Compile Include="GameSimulators\BaseGameSimulator.cs" />
     <Compile Include="GameSimulators\GameSimulationResult.cs" />
     <Compile Include="GameSimulators\IGameSimulator.cs" />
+    <Compile Include="GameSimulators\SharkVsAllInPlayerSimulator.cs" />
     <Compile Include="GameSimulators\SharkVsDummyPlayerSimulator.cs" />
     <Compile Include="GameSimulators\SharkVsSmartPlayerSimulator.cs" />
     <Compile Include="GameSimulators\SmartVsAlwaysCallPlayerSimulator.cs" />
@@ -78,6 +79,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\AI\TexasHoldem.AI.AllInPlayer\TexasHoldem.AI.AllInPlayer.csproj">
+      <Project>{b8b7abf1-4114-46bd-af20-ec3d5c932bdf}</Project>
+      <Name>TexasHoldem.AI.AllInPlayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\AI\TexasHoldem.AI.DummyPlayer\TexasHoldem.AI.DummyPlayer.csproj">
       <Project>{8F8A872B-A022-4085-AABC-D3BC12B7C1D8}</Project>
       <Name>TexasHoldem.AI.DummyPlayer</Name>
