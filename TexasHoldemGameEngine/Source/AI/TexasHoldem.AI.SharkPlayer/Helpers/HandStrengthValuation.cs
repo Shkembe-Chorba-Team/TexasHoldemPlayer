@@ -1,7 +1,6 @@
-﻿using TexasHoldem.Logic;
-
-namespace TexasHoldem.AI.SharkPlayer.Helpers
+﻿namespace TexasHoldem.AI.SharkPlayer.Helpers
 {
+    using TexasHoldem.Logic;
     using System.Collections.Generic;
     using TexasHoldem.Logic.Cards;
     using TexasHoldem.Logic.Helpers;

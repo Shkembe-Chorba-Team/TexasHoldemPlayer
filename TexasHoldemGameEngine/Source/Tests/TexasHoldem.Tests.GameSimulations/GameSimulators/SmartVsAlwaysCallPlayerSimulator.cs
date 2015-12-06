@@ -1,12 +1,13 @@
 ﻿namespace TexasHoldem.Tests.GameSimulations.GameSimulators
 {
+    using AI.SharkPlayer;
     using TexasHoldem.AI.DummyPlayer;
     using TexasHoldem.AI.SmartPlayer;
     using TexasHoldem.Logic.Players;
 
-    internal class SmartVsAlwaysCallPlayerSimulator : BaseGameSimulator
+    internal class SharkVsAlwaysCallPlayerSimulator : BaseGameSimulator
     {
-        private readonly IPlayer firstPlayer = new SmartPlayer();
+        private readonly IPlayer firstPlayer = new SharkPlayer();
 
         private readonly IPlayer secondPlayer = new AlwaysCallDummyPlayer();
 

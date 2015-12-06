@@ -8,20 +8,21 @@
     {
         public static void Main()
         {
-            //SimulateGames(new SmartVsAlwaysCallPlayerSimulator());
+            SimulateGames(new SharkVsAlwaysCallPlayerSimulator());
             //SimulateGames(new SmartVsDummyPlayerSimulator());
             //SimulateGames(new SmartVsSmartPlayerSimulator());
             //SimulateGames(new AlwaysCallPlayersGameSimulator());
             SimulateGames(new SharkVsAllInPlayerSimulator());
             SimulateGames(new SharkVsSmartPlayerSimulator());
             SimulateGames(new SharkVsDummyPlayerSimulator());
+
         }
 
         private static void SimulateGames(IGameSimulator gameSimulator)
         {
             Console.WriteLine($"Running {gameSimulator.GetType().Name}...");
 
-            var simulationResult = gameSimulator.Simulate(10000);
+            var simulationResult = gameSimulator.Simulate(5000);
 
             Console.WriteLine(simulationResult.SimulationDuration);
             Console.WriteLine($"Total games: {simulationResult.FirstPlayerWins:0,0} - {simulationResult.SecondPlayerWins:0,0}");

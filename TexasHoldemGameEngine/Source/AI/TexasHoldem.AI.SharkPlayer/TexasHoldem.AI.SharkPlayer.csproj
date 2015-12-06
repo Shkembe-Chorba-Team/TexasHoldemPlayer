@@ -39,6 +39,7 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\TableStrengthOpportunities.cs" />
     <Compile Include="SharkPlayer.cs" />
     <Compile Include="Helpers\CardValuationType.cs" />
     <Compile Include="Helpers\HandStrengthValuation.cs" />

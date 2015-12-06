@@ -10,7 +10,7 @@
     public class SharkPlayer : BasePlayer
     {
         public override string Name { get; } = "SharkPlayer_" + Guid.NewGuid();
-        
+
         private int totalOponentBets { get; set; }
         private int numberOfOponentBets { get; set; }
 
@@ -101,9 +101,21 @@
             if (context.RoundType == GameRoundType.Flop)
             {
                 var bestHand = HandStrengthValuation.GetBestHand(this.CommunityCards, this.FirstCard, this.SecondCard);
-                if ((int) bestHand > (int) HandRankType.Pair)
+                var bestHandOnTable = TableStrengthOpportunities.GetBestPossibleHand(this.CommunityCards, this.FirstCard, this.SecondCard);
+
+                if ((int)bestHand < (int)bestHandOnTable && context.MoneyToCall > context.CurrentPot - context.MoneyToCall)
                 {
-                    return PlayerAction.Raise(context.CurrentPot*3);
+                    return PlayerAction.Fold();
+                }
+
+                if ((int)bestHand > (int)HandRankType.Pair)
+                {
+                    if ((int)bestHand > (int)bestHandOnTable)
+                    {
+                        return PlayerAction.Raise(context.CurrentPot * 4);
+                    }
+
+                    return PlayerAction.Raise(context.CurrentPot * 3);
                 }
                 else
                 {
@@ -114,8 +126,20 @@
             if (context.RoundType == GameRoundType.Turn)
             {
                 var bestHand = HandStrengthValuation.GetBestHand(this.CommunityCards, this.FirstCard, this.SecondCard);
+                var bestHandOnTable = TableStrengthOpportunities.GetBestPossibleHand(this.CommunityCards, this.FirstCard, this.SecondCard);
+
+                if ((int)bestHand < (int)bestHandOnTable && context.MoneyToCall > context.CurrentPot - context.MoneyToCall)
+                {
+                    return PlayerAction.Fold();
+                }
+
                 if ((int)bestHand > (int)HandRankType.Pair)
                 {
+                    if ((int)bestHand > (int)bestHandOnTable)
+                    {
+                        return PlayerAction.Raise(context.CurrentPot * 4);
+                    }
+
                     return PlayerAction.Raise(context.CurrentPot * 3);
                 }
                 else
@@ -127,9 +151,21 @@
             if (context.RoundType == GameRoundType.River)
             {
                 var bestHand = HandStrengthValuation.GetBestHand(this.CommunityCards, this.FirstCard, this.SecondCard);
+                var bestHandOnTable = TableStrengthOpportunities.GetBestPossibleHand(this.CommunityCards, this.FirstCard, this.SecondCard);
+
+                if ((int)bestHand < (int)bestHandOnTable && context.MoneyToCall > context.CurrentPot - context.MoneyToCall)
+                {
+                    return PlayerAction.Fold();
+                }
+
                 if ((int)bestHand > (int)HandRankType.Pair)
                 {
-                    return PlayerAction.Raise(context.CurrentPot * 4);
+                    if ((int)bestHand > (int)bestHandOnTable)
+                    {
+                        return PlayerAction.Raise(context.CurrentPot * 6);
+                    }
+
+                    return PlayerAction.Raise(context.CurrentPot * 5);
                 }
                 else
                 {
