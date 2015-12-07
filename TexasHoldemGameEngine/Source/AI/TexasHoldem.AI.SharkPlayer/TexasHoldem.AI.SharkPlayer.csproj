@@ -39,6 +39,9 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HandOptions\HandsHolder.cs" />
+    <Compile Include="HandOptions\IHandsHolder.cs" />
+    <Compile Include="Helpers\PlayerActionFactory.cs" />
     <Compile Include="Helpers\TableStrengthOpportunities.cs" />
     <Compile Include="SharkPlayer.cs" />
     <Compile Include="Helpers\CardValuationType.cs" />
@@ -51,6 +54,7 @@
       <Name>TexasHoldem.Logic</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

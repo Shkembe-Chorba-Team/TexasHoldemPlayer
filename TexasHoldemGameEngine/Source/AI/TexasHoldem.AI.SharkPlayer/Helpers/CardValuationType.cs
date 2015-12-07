@@ -1,5 +1,8 @@
 ﻿namespace TexasHoldem.AI.SharkPlayer.Helpers
 {
+    /// <summary>
+    /// An enumerator with the card valuation type.
+    /// </summary>
     public enum CardValuationType
     {
         Unplayable = 0,

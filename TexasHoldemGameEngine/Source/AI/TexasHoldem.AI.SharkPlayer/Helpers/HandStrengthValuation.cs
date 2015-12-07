@@ -5,10 +5,16 @@
     using TexasHoldem.Logic.Cards;
     using TexasHoldem.Logic.Helpers;
 
+    /// <summary>
+    /// This class can check the strength of your hand and the best possible hand you can have.
+    /// </summary>
     public static class HandStrengthValuation
     {
         private const int MaxCardTypeValue = 14;
 
+        /// <summary>
+        /// An array that hold all different possibilities of cards you can have in your hand.
+        /// </summary>
         private static readonly int[,] StartingHandRecommendations =
             {
                 { 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2 }, // AA AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s
@@ -27,6 +33,12 @@
             };
 
         // http://1.bp.blogspot.com/-HmtVbroPazc/VG0V-COHOvI/AAAAAAAAaJE/WFZW3ot-w8Y/s1600/poker-hands-texas-hold-em-odds-heads-up.gif
+        /// <summary>
+        /// Checks the cards in your hand and returns your card valuation type.
+        /// </summary>
+        /// <param name="firstCard">Player's first card.</param>
+        /// <param name="secondCard">Player's second card.</param>
+        /// <returns>Player's valuation type.</returns>
         public static CardValuationType PreFlop(Card firstCard, Card secondCard)
         {
             var value = firstCard.Suit == secondCard.Suit
@@ -52,6 +64,13 @@
             }
         }
 
+        /// <summary>
+        /// Returns the best possible hand a player can have with the cards on the table.
+        /// </summary>
+        /// <param name="communityCards">Cards on the table.</param>
+        /// <param name="firstCard">Player's first card.</param>
+        /// <param name="secondCard">Player's second card.</param>
+        /// <returns>Best possible hand.</returns>
         public static HandRankType GetBestHand(IReadOnlyCollection<Card> communityCards, Card firstCard, Card secondCard)
         {
             var allCards = new List<Card>(communityCards);

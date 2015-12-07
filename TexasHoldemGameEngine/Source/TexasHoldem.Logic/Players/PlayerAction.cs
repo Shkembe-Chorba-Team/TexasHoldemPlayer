@@ -62,5 +62,10 @@
                 return this.Type.ToString();
             }
         }
+
+        public static PlayerAction Raise(object p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

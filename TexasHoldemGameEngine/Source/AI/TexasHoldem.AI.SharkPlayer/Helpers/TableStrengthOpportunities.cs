@@ -5,14 +5,19 @@
     using TexasHoldem.Logic;
     using System.Collections.Generic;
     using TexasHoldem.Logic.Cards;
-    using TexasHoldem.Logic.Helpers;
     using System;
 
     public class TableStrengthOpportunities
     {
-        // Not precise.
+        /// <summary>
+        /// Returns the best possible hand a player can have.
+        /// </summary>
+        /// <param name="communityCards">All cards on the table.</param>
+        /// <param name="playerCards">All cards in yourhand.</param>
+        /// <returns>A variable of type HandRankType with the best possible hand.</returns>
         public static HandRankType GetBestPossibleHand(IReadOnlyCollection<Card> communityCards, params Card[] playerCards)
         {
+            // Not precise.
             var allCards = new List<Card>(communityCards);
 
             if (allCards.GroupBy(c => c.Type).Any(gr => gr.Count() >= 2))
@@ -49,6 +54,13 @@
             return HandRankType.TwoPairs;
         }
 
+        /// <summary>
+        /// Checks if player has one card.
+        /// </summary>
+        /// <param name="allCards">A list of all cards on the table.</param>
+        /// <param name="playerCards">An Array with the player's cards.</param>
+        /// <param name="groupOf">A group of cards as an int.</param>
+        /// <returns>A boolean that says if player has one card.</returns>
         private static bool CheckIfPlayerHasOneCard(List<Card> allCards, Card[] playerCards, int groupOf = 2)
         {
             var allTypes = allCards.GroupBy(c => c.Type).Where(gr => gr.Count() >= groupOf);
@@ -56,6 +68,12 @@
             return allTypes.Any(gr => gr.Any(c => c.Type == playerCards[0].Type || c.Type == playerCards[1].Type));
         }
 
+        /// <summary>
+        /// Checks if player's hands form a sequence.
+        /// </summary>
+        /// <param name="allCards">A list of all cards on the table.</param>
+        /// <param name="playerCards">An array from the player's cards.</param>
+        /// <returns>A boolean that sais if there is a sequence.</returns>
         private static bool CheckIfPlayerCardsContainFromSequence(List<Card> allCards, Card[] playerCards)
         {
 
@@ -74,6 +92,11 @@
             return false;
         }
 
+        /// <summary>
+        /// Checks if player can possibly have a straight.
+        /// </summary>
+        /// <param name="allCards">List of all cards.</param>
+        /// <returns>A boolean that sais if there is any chance of having a straight.</returns>
         private static bool CheckIfPossibleStraight(List<Card> allCards)
         {
             var allTypes = allCards.Select(x => (int)x.Type).ToArray();
